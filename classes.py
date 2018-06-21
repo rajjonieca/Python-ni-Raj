@@ -67,7 +67,7 @@ class Lambo(Vehicle):
 """
 
 #Override
-
+"""
 class Employee(object):
     def __init__(self,emp):
         self.emp = emp
@@ -75,14 +75,16 @@ class Employee(object):
         print("Hello ",self.emp)
     def calculate_wage(self,wage):
         total = wage * 12.0
-        print("The salary of %s is %f " % (self.emp, total))
+        print("The salary of %s is %.2f " % (self.emp, total))
+        print("-----------------------------------------------")
 
 class PartTime(Employee):
     def print_greetings(self):
         print("Get to work ",self.emp,"! ")
     def calculate_wage(self,wage):
         total = wage * 20.0
-        print("The wage of %s is %f " % (self.emp, total))
+        print("The wage of %s is %.2f " % (self.emp, total))
+        print("-----------------------------------------------")
 
 my_emp = Employee("Joyce")
 my_emp.print_greetings()
@@ -92,7 +94,103 @@ my_emp2 = PartTime("Samantha")
 my_emp2.print_greetings()
 my_emp2.calculate_wage(128.0)
 
+my_emp3 = Employee("Kate")
+my_emp3.print_greetings()
+my_emp3.calculate_wage(75.0)
+"""
+"""
+class MyCompany(object):
+    def __init__(self,comp_name):
+        self.comp_name = comp_name
+        self.emp_list = {}
+    def add_employee(self, name, wage):
+        if not name in self.emp_list:
+            self.emp_list[name] = wage
+            print(name + " added!")
+        else:
+            print(name+ " existed")
 
+    def print_employees(self):
+        print("Welcome to ", self.comp_name)
+        for empz in self.emp_list:
+            print(empz +"\t" , self.emp_list[empz])
+    def compute_salaries(self):
+        total = 0
+        for salaries in self.emp_list:
+            total += self.emp_list[salaries]
+        print("Main Total Expenses: %.2f " % (total))
+        print("-------------------------------------------")
+
+class BranchCompany(MyCompany):
+    def add_employee(self, name, wage):
+        if not name in self.emp_list:
+            self.emp_list[name] = wage * 0.12
+            print(name + " added!")
+        else:
+            print(name+ " existed")
+    def print_employees(self):
+        print("Welcome to ",self.comp_name)
+        for empz in self.emp_list:
+            print("%s \t %.2f" % (empz, self.emp_list[empz]))
+    def compute_salaries(self):
+        total = 0
+        for salaries in self.emp_list:
+            total += self.emp_list[salaries] * 0.10
+        print("Total Expenses: %.2f " % (total))
+        print("-------------------------------------------")
+    def full_time_computation(self):
+        return super(BranchCompany, self).compute_salaries()
+
+
+comp1 = MyCompany("JCorp")
+comp1.add_employee("Joyce",90.0)
+comp1.add_employee("Kate",70.0)
+comp1.add_employee("Angel",80.0)
+comp1.add_employee("Joyce",90.0)
+comp1.add_employee("Gena",80.0)
+comp1.add_employee("Samantha",170.0)
+comp1.print_employees()
+comp1.compute_salaries()
+
+brcomp = BranchCompany("JCorp Cabanatuan")
+brcomp.add_employee("Mikhayla", 78.0)
+brcomp.add_employee("Clarisse", 90.0)
+brcomp.print_employees()
+brcomp.compute_salaries()
+print (brcomp.full_time_computation())
+"""
+
+"""
+#Triangles
+class Triangle(object):
+  number_of_sides = 3
+  def __init__(self,angle1,angle2,angle3):
+    self.angle1 = angle1
+    self.angle2 = angle2
+    self.angle3 = angle3
+  def check_angles(self):
+    sum = self.angle1 + self.angle2 + self.angle3
+    if sum == 180:
+      return print(True)
+    else:
+      return print(False)
+
+class Equilateral(Triangle):
+  angle = 60
+  def __init__(self):
+    self.angle1 = self.angle
+    self.angle2 = self.angle
+    self.angle3 = self.angle
+  def is_triangle(self):
+    return super(Equilateral, self).check_angles()
+
+
+tatsulok = Triangle(90.0, 45.0, 45.0)
+tatsulok.check_angles()
+
+my_triangle = Equilateral()
+my_triangle.is_triangle()
+"""
 
 
 
