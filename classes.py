@@ -191,6 +191,107 @@ tatsulok.check_angles()
 my_triangle = Equilateral()
 my_triangle.is_triangle()
 """
+"""
+class Car(object):
+    condition = "new"
+    def __init__(self,model,color,mpg):
+        self.model = model
+        self.color = color
+        self.mpg = mpg
+    def display_car(self):
+        print("This is a %s %s with a %d MPG." % (self.color, self.model, self.mpg))
+    def drive_car(self):
+        print("You are driving a %s %s with a %s MPG." % (self.color, self.model, self.mpg))
+        self.condition = "used"
+
+class ElectricCar(Car):
+    condition = "new"
+    def __int__(self,model,color,mpg):
+        self.model = model
+        self.color = color
+        self.mpg = mpg
+    def display_car(self):
+        print("This is a %s %s with a %d MPG." % (self.color, self.model, self.mpg))
+    def drive_car(self):
+        print("You are driving a %s %s with a %s MPG." % (self.color, self.model, self.mpg))
+        self.condition = "used"
+
+
+my_car = ElectricCar("Porcche","Black",128)
+my_car.display_car()
+"""
+
+#File I/O
+
+my_girls = {'Angel':'PLMar', 'Samantha':'WCC', 'Gena':'TIP', 'Joyce':'AU'}
+"""
+my_file = open("C:\\Users\\Gerard Jonieca\Documents\IONIC\pyraj\output.txt","r")
+
+for girl in my_girls:
+    my_file.write(girl + "\t" +my_girls[girl] + "\n")
+
+print(my_file.read())
+
+print(my_file.readline())
+print(my_file.readline())
+print(my_file.readline())
+my_file.close()
+"""
+"""
+with open("C:\\Users\\Gerard Jonieca\Documents\IONIC\pyraj\joyce.txt","w") as textfile:
+    textfile.write("MAHAL KO SI JOYCE")
+"""
+
+class Hero(object):
+    def __init__(self,name,HP,mana):
+        self.name =name
+        self.HP = HP
+        self.mana = mana
+        self.mga_gamit = {}
+    def add_item(self, gamit, desc):
+        if not gamit in self.mga_gamit:
+            self.mga_gamit[gamit] = desc
+            print(gamit+" added!")
+        else:
+            print(self.mga_gamit[gamit]+" already exists!")
+    def print_gamit(self):
+        print("Item \t Description")
+        for gamit in self.mga_gamit:
+            print(gamit+" \t "+self.mga_gamit[gamit])
+
+class Strength_Hero(Hero):
+    def add_to_strength_hero(self, gamit, desc):
+        return super(Strength_Hero, self).add_item(gamit,desc)
+    def print_strength_gamit(self):
+        return super(Strength_Hero,self).print_gamit()
+    def print_hero(self):
+        print("Name \t HP \t Mana")
+        print(self.name+" \t "+str(self.HP)+" \t "+str(self.mana))
+    def heart_of_tarrasque(self):
+        self.add_to_strength_hero("Heart of Tarrasque", "Adds 1000 HP")
+        self.HP = self.HP + 1000
+        print("New HP: %.2f " % (self.HP))
+
+"""
+traxex = Hero("Traxex",1200,800)
+traxex.add_item("Buriza-do-kyanon","Adds 45% Critical Damage")
+traxex.add_item("Shadow Blade","Makes hero invisible for 60 seconds")
+traxex.add_item("Divine Rapier","Adds 500 damage")
+traxex.print_gamit()
+"""
+axe = Strength_Hero("Axe",1400,800)
+axe.add_to_strength_hero("Vanguard","Blocks 50% attacks")
+axe.print_strength_gamit()
+axe.heart_of_tarrasque()
+axe.print_hero()
+axe.print_strength_gamit()
+
+
+
+
+
+
+
 
 
 
